@@ -10,13 +10,19 @@ const searchTemperature = () => {
 }
 const displayTemparature = temp => {
     console.log(temp);
-    const city = document.getElementById('city');
-    city.innerText = temp.name;
-    const condition = document.getElementById('condition');
-    condition.innerText = temp.weather[0].main;
-    const temperature = document.getElementById('temperature');
-    temperature.innerText = temp.main.temp;
-    const imageUrl = `http://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png`
-    const weatherIcon = document.getElementById('weather-icon');
-    weatherIcon.setAttribute('src', imageUrl);
+    if (temp.cod === "404") {
+        alert("City not found");
+    }
+    else {
+        const city = document.getElementById('city');
+        city.innerText = temp.name;
+        const condition = document.getElementById('condition');
+        condition.innerText = temp.weather[0].main;
+        const temperature = document.getElementById('temperature');
+        temperature.innerText = temp.main.temp;
+        const imageUrl = `http://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png`
+        const weatherIcon = document.getElementById('weather-icon');
+        weatherIcon.setAttribute('src', imageUrl);
+    }
+
 }
